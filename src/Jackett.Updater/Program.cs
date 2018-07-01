@@ -45,7 +45,7 @@ namespace Jackett.Updater
                 logger.Info("Pausing for 3 seconds to give Jackett & tray time to shutdown");
                 System.Threading.Thread.Sleep(3000);
             }
-        
+
             processService = new ProcessService(logger);
             windowsService = new WindowsServiceConfigService(processService, logger);
 
@@ -198,7 +198,6 @@ namespace Jackett.Updater
                 "Content/css/jquery.dataTables_themeroller.css",
                 "Definitions/tspate.yml",
                 "Definitions/freakstrackingsystem.yml",
-                "Definitions/rarbg.yml",
                 "Definitions/t411.yml",
                 "Definitions/hdbc.yml", // renamed to hdbitscom
                 "Definitions/maniatorrent.yml",
