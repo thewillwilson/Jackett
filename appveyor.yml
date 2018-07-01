@@ -28,7 +28,7 @@ deploy:
   auth_token:
     secure: DZubHcCR4MDdNtOmgbd7GBrWNYhYCPfyYf48jf67RTSj/NnVWM01MFJoQ31KHQnc
   artifact: /^(?:(?![Ee]xperimental).)*$/
-  draft: true
+  draft: false
   on:
     branch: master
 notifications:
