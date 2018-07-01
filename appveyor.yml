@@ -26,7 +26,7 @@ deploy:
   tag: v$(appveyor_build_version)
   description: $(release_description)
   auth_token:
-    secure: TwfqUjFH6SxVh45ckJsRDDXPGh3vfxDDNmHFogHRG3KuPU0um8qXaZAiZiJMV9YI
+    secure: DZubHcCR4MDdNtOmgbd7GBrWNYhYCPfyYf48jf67RTSj/NnVWM01MFJoQ31KHQnc
   artifact: /^(?:(?![Ee]xperimental).)*$/
   draft: true
   on:
