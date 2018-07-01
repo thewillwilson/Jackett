@@ -1,18 +1,21 @@
 ﻿---
-  site: wckd
-  name: WCKD
-  description: "WCKD is the best"
+  site: rarbg
+  name: RARBG
+  description: "RARBG is the best"
   language: en-us
   type: public
   encoding: UTF-8
   links:
-    - https://rarbg.to
+    - https://rarbg.to/
 
   caps:
     categorymappings:
+      #TV
       - {id: 18, cat: TV/SD, desc: "TV Episodes"}
       - {id: 41, cat: TV/HD, desc: "TV HD Episodes"}
       - {id: 49, cat: TV/HD, desc: "TV UHD Episodes"}
+
+      #Movies
       - {id: 44, cat: Movies/HD, desc: "Movies/x264/1080"}
       - {id: 45, cat: Movies/HD, desc: "Movies/x264/720"}
       - {id: 47, cat: Movies/3D, desc: "Movies/x264/3D"}
@@ -26,11 +29,13 @@
       tv-search: [q, season, ep]
       movie-search: [q, imdbid]
 
+  settings: []
+
   search:
     paths:
       - path: /torrents.php
     inputs:
-      $raw: "{{range .Categories}}filter_cat[{{.}}]=1&{{end}}"
+      $raw: "{{range .Categories}}filter_cat[]={{.}}&{{end}}"
       search: "{{if .Query.IMDBID}}{{ .Query.IMDBID }}{{else}}{{ .Query.Keywords }}{{end}}"
     rows:
       selector: table.lista2t > tbody > tr.lista2
