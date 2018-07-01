@@ -1,7 +1,6 @@
-﻿---
+---
   site: rarbg
   name: RARBG
-  description: "RARBG is the best"
   language: en-us
   type: public
   encoding: UTF-8
@@ -9,20 +8,26 @@
     - https://rarbg.to/
 
   caps:
-    categorymappings:
-      #TV
-      - {id: 18, cat: TV/SD, desc: "TV Episodes"}
-      - {id: 41, cat: TV/HD, desc: "TV HD Episodes"}
-      - {id: 49, cat: TV/HD, desc: "TV UHD Episodes"}
-
-      #Movies
-      - {id: 44, cat: Movies/HD, desc: "Movies/x264/1080"}
-      - {id: 45, cat: Movies/HD, desc: "Movies/x264/720"}
-      - {id: 47, cat: Movies/3D, desc: "Movies/x264/3D"}
-      - {id: 50, cat: Movies/HD, desc: "Movies/x264/4k"}
-      - {id: 51, cat: Movies/HD, desc: "Movies/x265/4k"}
-      - {id: 52, cat: Movies/HD, desc: "Movs/x265/4k/HDR"}
-      - {id: 46, cat: Movies/HD, desc: "Movies/BD Remux"}
+    categories:
+      4: XXX # XXX (18+)
+      14: Movies/SD # Movies/XVID
+      48: Movies/HD # Movies/XVID/720
+      17: Movies/SD # Movies/x264
+      44: Movies/HD # Movies/x264/1080
+      45: Movies/HD # Movies/x264/720
+      47: Movies/3D # Movies/x264/3D
+      42: Movies/BluRay # Movies/Full BD
+      46: Movies/HD # Movies/BD Remux
+      18: TV/SD # TV Episodes
+      41: TV/HD # TV HD Episodes
+      23: Audio/MP3 # Music/MP3
+      25: Audio/Lossless # Music/FLAC
+      27: PC/Games # Games/PC ISO
+      28: PC/Games # Games/PC RIP
+      40: Console/PS3 # Games/PS3
+      32: Console/Xbox # Games/XBOX-360
+      33: PC/0day # Software/PC ISO
+      35: Books # e-Books
 
     modes:
       search: [q]
@@ -32,11 +37,11 @@
   settings: []
 
   search:
-    paths:
-      - path: /torrents.php
+    path: /torrents.php
     inputs:
-      $raw: "{{range .Categories}}filter_cat[]={{.}}&{{end}}"
+      $raw: "{{range .Categories}}category[]={{.}}&{{end}}"
       search: "{{if .Query.IMDBID}}{{ .Query.IMDBID }}{{else}}{{ .Query.Keywords }}{{end}}"
+
     rows:
       selector: table.lista2t > tbody > tr.lista2
     fields:
