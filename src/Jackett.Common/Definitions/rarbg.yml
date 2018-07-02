@@ -44,7 +44,7 @@
     inputs:
       cookie: "{{ .Config.cookie }}"
     test:
-      path: index.php
+      path: /dmca_info.php
 
   search:
     path: /torrents.php
