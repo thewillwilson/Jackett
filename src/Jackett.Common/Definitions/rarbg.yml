@@ -34,7 +34,17 @@
       tv-search: [q, season, ep]
       movie-search: [q, imdbid]
 
-  settings: []
+  settings:
+    - name: cookie
+      type: text
+      label: Cookie
+
+  login:
+    method: cookie
+    inputs:
+      cookie: "{{ .Config.cookie }}"
+    test:
+      path: index.php
 
   search:
     path: /torrents.php
