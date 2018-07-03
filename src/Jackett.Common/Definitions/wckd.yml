@@ -1,20 +1,14 @@
-﻿---
+---
   site: wckd
   name: WCKD
-  description: "RARBG is the best"
   language: en-us
-  type: public
+  type: private
   encoding: UTF-8
   links:
     - https://rarbg.to
 
   caps:
     categorymappings:
-      #TV
-      - {id: 18, cat: TV/SD, desc: "TV Episodes"}
-      - {id: 41, cat: TV/HD, desc: "TV HD Episodes"}
-      - {id: 49, cat: TV/HD, desc: "TV UHD Episodes"}
-
       #Movies
       - {id: 44, cat: Movies/HD, desc: "Movies/x264/1080"}
       - {id: 45, cat: Movies/HD, desc: "Movies/x264/720"}
@@ -22,20 +16,36 @@
       - {id: 50, cat: Movies/HD, desc: "Movies/x264/4k"}
       - {id: 51, cat: Movies/HD, desc: "Movies/x265/4k"}
       - {id: 52, cat: Movies/HD, desc: "Movs/x265/4k/HDR"}
+      - {id: 42, cat: Movies/HD, desc: "Movies/Full BD"}
       - {id: 46, cat: Movies/HD, desc: "Movies/BD Remux"}
+
+      #TV
+      - {id: 41, cat: TV/HD, desc: "TV HD Episodes"}
+      - {id: 49, cat: TV/HD, desc: "TV UHD Episodes"}
 
     modes:
       search: [q]
       tv-search: [q, season, ep]
       movie-search: [q, imdbid]
 
+  settings:
+    - name: cookie
+      type: text
+      label: Cookie
+
+  login:
+    method: cookie
+    inputs:
+      cookie: "{{ .Config.cookie }}"
+    test:
+      path: index.php
 
   search:
-    paths:
-      - path: /torrents.php
+    path: /torrents.php
     inputs:
       $raw: "{{range .Categories}}filter_cat[{{.}}]=1&{{end}}"
       search: "{{if .Query.IMDBID}}{{ .Query.IMDBID }}{{else}}{{ .Query.Keywords }}{{end}}"
+
     rows:
       selector: table.lista2t > tbody > tr.lista2
     fields:
@@ -49,7 +59,6 @@
             args: "&f=dummy.torrent"
       title:
         selector: a[href^="/torrent/"]
-        attribute: title
       details:
         selector: a[href^="/torrent/"]
         attribute: href
